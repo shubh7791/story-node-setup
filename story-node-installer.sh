@@ -86,15 +86,15 @@ PEERS="10f4a5147c5ae2e4707e9077aad44dd1c3fc7cd3@116.202.217.20:37656,ccb6e8d1788
 sed -i "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.story/story/config/config.toml
 
 # Enable and start both service files 
-systemctl daemon-reload
-systemctl enable story
-systemctl enable story-geth
+sudo systemctl daemon-reload
+sudo systemctl enable story
+sudo systemctl enable story-geth
 
 # story-geth
-systemctl start story-geth 
+sudo systemctl start story-geth 
 
 # story
-systemctl start story 
+sudo systemctl start story 
 
 # Node sync status checker
 status=$(curl -s localhost:26657/status | jq -r '.result.sync_info.catching_up')
